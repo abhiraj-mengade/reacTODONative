@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FBF8F1',
+        marginBottom: 20,
     },
     inputContainer: {
         flexDirection: 'row',
@@ -47,9 +48,8 @@ const styles = StyleSheet.create({
     },  
     input: {
         width: '80%',
-        borderBottomColor: '#313552',
         borderBottomWidth: 1,
         fontSize: 20,
-        color: '#313552',
+        color: '#362706',
     },
 });

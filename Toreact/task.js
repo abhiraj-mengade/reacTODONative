@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Task({ task, index, deleteTask }) {
+export default function Task({ task, index, deleteTask, toggleTask }) {
     return (
         <View style={styles.task}>
-        <Text style={[styles.text]}>{task}</Text>
+            <TouchableOpacity onPress={() => toggleTask(index)}>
+                <MaterialIcons name={task.done ? "check-box" : "check-box-outline-blank"} size={30} color="green" />
+            </TouchableOpacity>
+        <Text style={[styles.text, task.done && styles.done]}>{task.value}</Text>
         <TouchableOpacity onPress={() => deleteTask(index)}>
             <MaterialIcons name="delete" size={30} color="#C62828" />
         </TouchableOpacity>
@@ -20,10 +23,14 @@ export default function Task({ task, index, deleteTask }) {
             borderBottomWidth: 1,
             borderBottomColor: '#eee',
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'left',
         },
         text: {
             fontSize: 20,
             color: '#362706',
+        },
+        done: {
+            textDecorationLine: 'line-through',
+            color: 'grey',
         },
     });

@@ -8,8 +8,11 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
 
   const addTask = (task) => {
+    let taski =[]
+    taski.value = task
+    taski.done = false;
     if (task == null) return;
-    setTasks([...tasks, task]);
+    setTasks([...tasks, taski]);
     Keyboard.dismiss();
   }
 
@@ -18,13 +21,10 @@ export default function App() {
     setTasks(tasks.filter((index) => index != deleteIndex));
   }
 
-  const toggleTask = (toggleIndex) => {
-    setTasks(tasks.map((value, index) => {
-      if (index == toggleIndex) {
-        value.done = !value.done;
-      }
-      return value;
-    }));
+  const toggleTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].done = !newTasks[index].done;
+    setTasks(newTasks);
   }
 
   return (
